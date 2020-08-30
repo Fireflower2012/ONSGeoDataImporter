@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ONSGeoDataImporter/v16
+/.vs/ONSGeoDataImporter/DesignTimeBuild
+/.vs/slnx.sqlite
+/.vs/ONSGeoDataImporter/config
+/ONSGeoDataImporter/bin/Debug/netcoreapp3.1
+/ONSGeoDataImporter/obj
