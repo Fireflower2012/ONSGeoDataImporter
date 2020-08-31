@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace ONSGeoDataImporter
 {
@@ -34,17 +36,19 @@ namespace ONSGeoDataImporter
                 {
                     case "Y":
 
-                        DataImport doStuff = new DataImport(Configuration);
-                        bool success = doStuff.mainProcess();
+                        DataImport doStuff = new DataImport(Configuration, "NSUL_data");
+                        //One day I may need to get more than one Data set and this will become a option you can select
+                        //Settings will need a rethink if this is ever needed.
+                        List<string> success =  doStuff.mainProcessAsync().Result;
 
-                        if (success)
+                        if (success.Count == 0)
                         {
                             Console.WriteLine("Import completed type 'Exit' to close");
                             input = Console.ReadLine().ToUpper();
                         }
                         else
                         {
-                            Console.WriteLine("Import failed type 'Exit' to close or 'Y' to re-run");
+                            Console.WriteLine("Some files failed to import. 'Exit' to close or 'Y' to re-run");
                             input = Console.ReadLine().ToUpper();
                         }
                         break;
@@ -63,15 +67,10 @@ namespace ONSGeoDataImporter
                 }
             }
 
-            Thread.Sleep(4000);
+            Thread.Sleep(1000);
             Environment.Exit(0);
 
         }
-
-
-
-
-
 
     }
 

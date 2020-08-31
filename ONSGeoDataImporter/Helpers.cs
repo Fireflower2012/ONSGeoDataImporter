@@ -15,5 +15,19 @@ namespace ONSGeoDataImporter
 
         }
 
+        public static string GetElapsedTime(DateTime start, DateTime end)
+        {
+
+            return $"{(end - start).TotalMinutes} mins";
+
+        }
+
+        public static string GetElapsedTime(DateTime start)
+        {
+
+            return $"{(DateTime.Now - start).TotalSeconds} s";
+
+        }
+
     }
 }
